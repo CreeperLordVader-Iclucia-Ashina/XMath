@@ -8,4 +8,5 @@ const Real EPS = 1e-12;
 //void DFT(Vec&);
 //void IDFT(Vec&);
 void LUDecompose(const Matrix<Real>&, Matrix<Real>&, Matrix<Real>&, Matrix<Real>&);
+void inverse(const Matrix<Real>&, Matrix<Real>&);
 #endif //XMATH_NUMERICAL_H

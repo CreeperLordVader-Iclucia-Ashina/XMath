@@ -119,6 +119,7 @@ class Matrix
             for(int i = 0; i < std::min(m, n); i++)
                 a[i * n + i] = static_cast<T>(1);
         }
+        bool isSquare() const { return m == n; }
         ~Matrix() { delete[] a; }
 };
 template class Matrix<Real>;
