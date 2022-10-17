@@ -5,7 +5,6 @@
 #include <cassert>
 using uint = uint;
 using Real = double;
-extern const Real EPS;
 template<typename T>
 class Matrix
 {
@@ -77,7 +76,7 @@ class Matrix
             for(int i = 0 ; i < m; i++)
                 for(int k = 0; k < n; k++)
                     for(int j = 0; j < A.n; j++)//maybe this can make use of the cache?
-                        ret[i][j] += a[i * n + k] * A[i][j];
+                        ret[i][j] += a[i * n + k] * A[k][j];
             return ret;
         }
         Matrix operator+(const Matrix& A) const
@@ -104,14 +103,10 @@ class Matrix
             for(int i = 0; i < m; i++)
             {
                 for(int j = 0; j < n; j++)
-                {
-                    if(fabs(a[i * n + j]) > EPS)
-                        std::cout << a[i * n + j] << ",";
-                    else std::cout << 0 << ",";
-                }
+                    std::cout << a[i * n + j] << ",";
                 std::cout << std::endl;
             }
-            std::cout << "----------------------" << std::endl;
+            std::cout << "------------" << std::endl;
         }
         void MakeIdentity()
         {
