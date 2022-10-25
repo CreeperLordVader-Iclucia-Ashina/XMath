@@ -139,7 +139,7 @@ namespace xmath
 
     }
 
-    //diagonalize a symmetric real matrix, such that A = PDP^T
+    //diagonalize a real symmetric matrix, such that A = PDP^T
     //sortEigen denotes whether to sort the eigen values by absolute value
     void diagonalize(const Matrix<Real>& A, Matrix<Real>& P, Matrix<Real>& D, bool sortEigen)
     {
