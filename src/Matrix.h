@@ -3,7 +3,7 @@
 #include "Vector.h"
 #include <cstring>
 #include <cassert>
-#include "global.h"
+#include "../core/core.h"
 namespace xmath
 {
     template<typename T>
@@ -13,6 +13,7 @@ namespace xmath
             uint m, n;//m: the number of rows. n: the number of columns
             T* a = nullptr;//we use row-major order, and we only support left multiplication to a vector
         public:
+            Matrix() { m = n = 0; }
             Matrix(uint _m, uint _n) : m(_m), n(_n)
             {
                 static_assert(std::is_arithmetic<T>(), "Error: Elements of matrix must be arithmetic type!");

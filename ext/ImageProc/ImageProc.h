@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 #include "Image.h"
-#include "Vector.h"
 namespace ImageProc
 {
 
