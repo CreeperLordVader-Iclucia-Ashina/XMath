@@ -8,6 +8,7 @@
 #include <cmath>
 #include "../Vector.h"
 #include "../global.h"
+#include "../Matrix.h"
 #include <ctime>
 using namespace ext;
 const Real PI = 3.1415926535897;
@@ -43,7 +44,11 @@ inline Vec2 uniform_sample_disk()//uniformly sample a point on a disk x^2+y^2=1
     const Real R = std::sqrt(get_random());
     return Vec2({R * std::cos(Phi), R * std::sin(Phi)});
 }
-inline Vec3 cos_weighted_sample_hemisphere()//sample a point on a hemisphere x^2+y^2+z^2=1,z>=0 at cosine weight
+/**
+ * @brief sample a point on a hemisphere x^2+y^2+z^2=1,z>=0 at cosine weight
+ */
+
+inline Vec3 cos_weighted_sample_hemisphere()
 {
     const Vec2 p = uniform_sample_disk();
     return Vec3({ p[0], p[1], std::sqrt(1 - p[0] * p[0] - p[1] * p[1]) });
@@ -66,5 +71,17 @@ inline Vec3 refract(const Vec3& wo, const Vec3& N, Real eta)//eta = etaI / etaO
 inline bool checkInside(const Vec3& wo, const Vec3& N)
 {
     return wo.dot(N) <= 0.0;
+}
+inline Mat3 construct_frame(const Vec3& N)
+{
+    Vec3 T({ 1.0, 0.0, 0.0 });
+    if (normal[0] >= 0.9999 || normal[0] <= -0.9999)
+    {
+        T[0] = 0.0;
+        T[1] = 1.0;
+    }
+    const Vec3 B = cross(normal, T).normalize();
+    T = cross(normal, B);
+    return Mat3(T, B, N);
 }
 #endif //XMATH_MATHUTILS_H

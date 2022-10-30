@@ -12,53 +12,21 @@ namespace xmath
 {
     class Interpolation
     {
-        public:
-            virtual void interpolate(const Real*) = 0;
-            virtual Real operator()(Real) = 0;
-    };
-
-    class LinearInterpolation : public Interpolation
-    {
         private:
+            enum Style{PIECE_WISE, LAGRANGE, CHEBYSHEV, FOURIER, CUBIC_SPLINE} style;
             int n = 0;
-            Real* x = nullptr;
+            Real* a = nullptr;
         public:
-            void interpolate(const Real*) override;
-            Real operator()(Real) override;
+            void piecewise_interpolate(Real*, Real*);
+            void lagrange(Real*, Real*);
+            void chebyshev(Real*, Real*);
+            void fourier(Real*, Real*);
+            void cubic_spline(Real*, Real*);
+            int getStyle() const;
+            Real operator()(Real) const;
     };
 
-    class CubicSpline : public Interpolation
-    {
 
-    };
-
-    class NewtonPolynomial : public Interpolation
-    {
-
-    };
-
-    class LagrangePolynomial : public Interpolation
-    {
-
-    };
-
-    class ChebyshevPolynomial : public Interpolation
-    {
-
-    };
-
-    class TriangularInterpolation : public Interpolation
-    {
-
-    };
-
-    class VectorInterpolation
-    {
-        private:
-
-        public:
-
-    };
 }
 
 #endif //XMATH_INTERPOLATION_H
