@@ -3,8 +3,9 @@
 //
 
 #include "./Image.h"
-ImageProc::Vec3i ImageProc::PPMImage::pixel(uint u, uint v) const
+namespace ImageProc
 {
-    return {R[u][v], G[u][v], B[u][v]};
+    Vec3i PPMImage::pixel(uint u, uint v) const { return {R[u][v], G[u][v], B[u][v]}; }
 }
+
 

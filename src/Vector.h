@@ -1,5 +1,5 @@
-#ifndef XMATH_VECTOR_H
-#define XMATH_VECTOR_H
+#ifndef XMATH_TVECTOR_H
+#define XMATH_TVECTOR_H
 #include <utility>
 #include <cmath>
 #include <stdexcept>
@@ -218,4 +218,4 @@ namespace xmath
     T norm(const Vector<T>& A) { return static_cast<T>(std::sqrt(dot(A, A))); }
 }
 
-#endif //XMATH_VECTOR_H
+#endif //XMATH_TVECTOR_H

@@ -2,7 +2,7 @@
 // Created by creeper on 22-10-26.
 //
 /**
- * \brief Vector class for Graphics and Image Processing
+ * \brief TVector class for Graphics and Image Processing
  */
 #ifndef XMATH_VECTOR_H
 #define XMATH_VECTOR_H
@@ -18,7 +18,7 @@ namespace ext
      * @tparam N dimension of the vector.
      *           Different from the vector class in xmath, this vector usually has 2, 3 or 4 dims.
      *           That suits the need in graphics.
-     * @class Vector is specifically designed for graphics and image processing.
+     * @class TVector is specifically designed for graphics and image processing.
      */
     template<typename T, unsigned N>class Vector;
     template<typename T, unsigned N>

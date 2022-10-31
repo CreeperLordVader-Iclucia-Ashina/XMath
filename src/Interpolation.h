@@ -17,11 +17,11 @@ namespace xmath
             int n = 0;
             Real* a = nullptr;
         public:
-            void piecewise_interpolate(Real*, Real*);
-            void lagrange(Real*, Real*);
-            void chebyshev(Real*, Real*);
-            void fourier(Real*, Real*);
-            void cubic_spline(Real*, Real*);
+            void piecewise_interpolate(Vec2*);
+            void lagrange(Vec2*);
+            void chebyshev(Vec2*);
+            void fourier(Vec2*);
+            void cubic_spline(Vec2*);
             int getStyle() const;
             Real operator()(Real) const;
     };
