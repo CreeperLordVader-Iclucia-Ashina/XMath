@@ -7,27 +7,29 @@
 
 namespace xmath
 {
-    void Interpolation::piecewise_interpolate(Real *x, Real *y)
+    void Interpolation::piecewise_interpolate(Point2* p, int n)
     {
         style = Style::PIECE_WISE;
-        for(int i = 0; i < ; i++)
+        std::sort(p, p + n);
+        for(int i = 0; i < n; i++)
+            points[i] = p[i];
     }
-    void Interpolation::lagrange(Real *x, Real *y)
+    void Interpolation::lagrange(Point2* p, int n)
     {
         style = Style::LAGRANGE;
     }
 
-    void Interpolation::chebyshev(Real *x, Real *y)
+    void Interpolation::chebyshev(Point2* p, int n)
     {
         style = Style::CHEBYSHEV;
     }
 
-    void Interpolation::fourier(Real *x, Real *y)
+    void Interpolation::fourier(Point2* p, int n)
     {
         style = Style::FOURIER;
     }
 
-    void Interpolation::cubic_spline(Real *, Real *)
+    void Interpolation::cubic_spline(Point2* p, int n)
     {
         style = Style::CUBIC_SPLINE;
     }
@@ -37,7 +39,7 @@ namespace xmath
         return style;
     }
 
-    Real Interpolation::operator()(xmath::Real x) const
+    Real Interpolation::operator()(Real x) const
     {
         if(style == Style::PIECE_WISE)
         {

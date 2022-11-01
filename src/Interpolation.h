@@ -6,7 +6,9 @@
 #define XMATH_INTERPOLATION_H
 
 #include "../core/core.h"
+#include "Point.h"
 #include <memory>
+#include <vector>
 
 namespace xmath
 {
@@ -14,14 +16,14 @@ namespace xmath
     {
         private:
             enum Style{PIECE_WISE, LAGRANGE, CHEBYSHEV, FOURIER, CUBIC_SPLINE} style;
-            int n = 0;
-            Real* a = nullptr;
+            std::vector<Point2> points;
+            std::vector<Real> coeff;
         public:
-            void piecewise_interpolate(Vec2*);
-            void lagrange(Vec2*);
-            void chebyshev(Vec2*);
-            void fourier(Vec2*);
-            void cubic_spline(Vec2*);
+            void piecewise_interpolate(Point2*, int);
+            void lagrange(Point2*, int);
+            void chebyshev(Point2*, int);
+            void fourier(Point2*, int);
+            void cubic_spline(Point2*, int);
             int getStyle() const;
             Real operator()(Real) const;
     };
